@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineProps, watch, ref } from 'vue'
+import { computed, defineProps} from 'vue'
 
 const props = defineProps({
   assignedCourses: Array,

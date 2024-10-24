@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from "axios"
-
-import {ref} from "vue";
-import { GET_ASSIGNED_COURSES } from '@/constants/api.js'
+import { GET_ASSIGNED_COURSES } from '@/constants/index.js'
 
 export const useRootStore = defineStore('root',{
   state: () => ({

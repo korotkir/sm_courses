@@ -2,11 +2,28 @@
 import { useRootStore } from '@/stores/root.js'
 import { storeToRefs } from 'pinia'
 import Courses from '@/components/Courses.vue'
+import { useRoute, useRouter } from 'vue-router'
+import { computed } from 'vue'
+import Button from '@/components/Button.vue'
+import { ROUTER_PATHS } from '@/constants/index.js'
 
 const rootStore = useRootStore()
 rootStore.getAssignedCourses()
 
 const { assignedCourses } = storeToRefs(rootStore)
+
+const route = useRoute()
+const router = useRouter()
+
+const routeName = computed(() => route.name)
+
+function goToCourses() {
+  router.push(ROUTER_PATHS.COURSE_ASSIGN)
+
+  if (routeName.value === ROUTER_PATHS.COURSE_ASSIGN) {
+    router.go()
+  }
+}
 
 </script>
 <template>
@@ -15,14 +32,10 @@ const { assignedCourses } = storeToRefs(rootStore)
       <div class="title">
         <h1>Назначенные курсы</h1>
       </div>
-      <v-btn
-        class="to-btn text-none text-subtitle-1"
-        color="#1976D2"
-        size="large"
-        variant="flat"
-      >
-        Назначить курсы
-      </v-btn>
+      <Button
+        :click="goToCourses"
+        name="Назначить курс"
+      />
     </div>
 
     <Courses :courseData="assignedCourses"/>
@@ -37,8 +50,7 @@ const { assignedCourses } = storeToRefs(rootStore)
   align-items: center
   padding-bottom: 30px
 
-.to-btn
-  height: 100px
+
 
 .title h1
   padding: 15px 0
