@@ -34,24 +34,14 @@ function goToCourses() {
       </div>
       <Button
         :click="goToCourses"
-        name="Назначить курс"
+        name="Все курсы"
       />
     </div>
 
-    <Courses :courseData="assignedCourses"/>
+    <Courses :courseData="assignedCourses" textButton="Посмотреть"/>
   </v-container>
 </template>
 
 <style lang="sass" scoped>
-.top-block
-  display: flex
-  flex-direction: row
-  justify-content: space-between
-  align-items: center
-  padding-bottom: 30px
 
-
-
-.title h1
-  padding: 15px 0
 </style>

@@ -1,0 +1,185 @@
+// https://run.mocky.io/v3/04eb5b97-0d15-45dc-970a-57d1bacb8ab7
+{
+  "courses": [
+    {
+      "id": 21312132,
+      "name": "Основы SQL",
+      "maxScore": "10",
+      "duration": "17"
+    },
+    {
+      "id": 98765432,
+      "name": "Введение в Python",
+      "maxScore": "10",
+      "duration": "7"
+    },
+    {
+      "id": 11223344,
+      "name": "Основы JavaScript",
+      "maxScore": "10",
+      "duration": "8"
+    },
+    {
+      "id": 55667788,
+      "name": "Алгоритмы и структуры данных",
+      "maxScore": "15",
+      "duration": "15"
+    },
+    {
+      "id": 12345678,
+      "name": "Современный CSS",
+      "maxScore": "10",
+      "duration": "5"
+    },
+    {
+      "id": 23456789,
+      "name": "Тестирование программного обеспечения",
+      "maxScore": "20",
+      "duration": "10"
+    },
+    {
+      "id": 34567890,
+      "name": "Основы React",
+      "maxScore": "10",
+      "duration": "11"
+    },
+    {
+      "id": 87654321,
+      "name": "Работа с API",
+      "maxScore": "10",
+      "duration": "8"
+    },
+    {
+      "id": 76543210,
+      "name": "Машинное обучение",
+      "maxScore": "15",
+      "duration": "60"
+    },
+    {
+      "id": 45678901,
+      "name": "Разработка игр на Unity",
+      "maxScore": "10",
+      "duration": "7"
+    },
+    {
+      "id": 98712345,
+      "name": "Архитектура баз данных",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 56789012,
+      "name": "Основы Docker",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 78901234,
+      "name": "Введение в Kubernetes",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 67890123,
+      "name": "Оптимизация производительности",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 89012345,
+      "name": "Безопасность в программировании",
+      "maxScore": "10",
+      "duration": "7"
+    },
+    {
+      "id": 34561234,
+      "name": "Основы HTML5",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 67895432,
+      "name": "Продвинутый Python",
+      "maxScore": "15",
+      "duration": "14"
+    },
+    {
+      "id": 54321678,
+      "name": "Проектирование микросервисов",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 10987654,
+      "name": "Интерактивные веб-приложения",
+      "maxScore": "10",
+      "duration": "7"
+    },
+    {
+      "id": 90213456,
+      "name": "SQL для аналитиков",
+      "maxScore": "10",
+      "duration": "7"
+    },
+    {
+      "id": 43210987,
+      "name": "Git и система контроля версий",
+      "maxScore": "10",
+      "duration": "7"
+    },
+    {
+      "id": 23418976,
+      "name": "Основы OOP",
+      "maxScore": "10",
+      "duration": "9"
+    },
+    {
+      "id": 89076543,
+      "name": "Оптимизация запросов SQL",
+      "maxScore": "10",
+      "duration": "9"
+    },
+    {
+      "id": 67895431,
+      "name": "Базы данных NoSQL",
+      "maxScore": "10",
+      "duration": "9"
+    },
+    {
+      "id": 32107890,
+      "name": "REST API и WebSockets",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 54327891,
+      "name": "Продвинутый CSS",
+      "maxScore": "10",
+      "duration": "8"
+    },
+    {
+      "id": 87654320,
+      "name": "Основы Bash",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 43215678,
+      "name": "Java для начинающих",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 32108976,
+      "name": "Продвинутый JavaScript",
+      "maxScore": "10",
+      "duration": "10"
+    },
+    {
+      "id": 32108999,
+      "name": "Продвинутый Vim",
+      "maxScore": "10",
+      "duration": "100"
+    }
+  ]
+}

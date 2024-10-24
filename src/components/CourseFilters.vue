@@ -2,6 +2,7 @@
 import { computed, defineProps} from 'vue'
 
 const props = defineProps({
+  status: Boolean,
   assignedCourses: Array,
   selectedStatus: String,
   selectedDuration: String,
@@ -23,7 +24,7 @@ const statusOptions = computed(() => {
 const durationOptions = [
   'Все',
   'Неделя или меньше',
-  'До месяца',
+  'От недели до месяца',
   'Больше месяца'
 ]
 
@@ -34,6 +35,7 @@ const durationOptions = [
     <div class="filters__block">
       <div class="filter__selects">
         <v-select
+          v-if="props.status"
           class="filter__status"
           label="Статус"
           density="compact"

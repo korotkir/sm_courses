@@ -4,22 +4,33 @@ import CourseCard from '@/components/CourseCard.vue'
 import { computed, ref } from 'vue'
 
 const props = defineProps({
-  courseData: Array
+  courseData: Array,
+  textButton: String,
 })
 
 const selectedStatus = ref('Все')
 const selectedDuration = ref('Все')
 const searchQuery = ref('')
 
+const includeStatus = computed(() => {
+  return props.courseData.filter(el => el.hasOwnProperty('status')).length
+})
+
 const filteredByStatus = computed(() => {
   return props.courseData.filter(course => {
-    const statusMatch = selectedStatus.value === 'Все' || course.status === selectedStatus.value
+    let statusMatch;
+
+    if (includeStatus === 0) {
+      statusMatch = 0
+    } else {
+      statusMatch = selectedStatus.value === 'Все' || course.status === selectedStatus.value
+    }
 
     let durationMatch = true
     if (selectedDuration.value === 'Неделя или меньше') {
       durationMatch = course.duration <= 7
-    } else if (selectedDuration.value === 'Больше недели') {
-      durationMatch = course.duration > 7 && course.duration <= 30
+    } else if (selectedDuration.value === 'От недели до месяца') {
+      durationMatch = course.duration >= 8 && course.duration <= 30
     } else if (selectedDuration.value === 'Больше месяца') {
       durationMatch = course.duration > 30
     }
@@ -36,6 +47,7 @@ const courseCounter = computed(() => {
 
 <template>
   <CourseFilters
+    :status="!!includeStatus"
     :assignedCourses="props.courseData"
     :courseCounter="courseCounter"
     v-model:selectedStatus="selectedStatus"
@@ -49,6 +61,7 @@ const courseCounter = computed(() => {
     <CourseCard
       v-else
       v-for="course in filteredByStatus"
+      :textButton="props.textButton"
       :key="course.id"
       :course="course"
     />
