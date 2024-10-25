@@ -15,7 +15,6 @@ const emit = defineEmits(['update:selectedStatus', 'update:selectedDuration', 'u
 const statusOptions = computed(() => {
   if (Array.isArray(props.assignedCourses)) {
     const statuses = props.assignedCourses.map((elem) => elem.status)
-    console.log(['Все', ...new Set(statuses)])
     return ['Все', ...new Set(statuses)]
   }
   return []
