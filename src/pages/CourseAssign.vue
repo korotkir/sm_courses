@@ -46,7 +46,7 @@ function goToHome() {
       />
     </div>
 
-    <Courses :courseData="availableCourses" textButton="Назначить себе"/>
+    <Courses :courseData="availableCourses" :assign="true"/>
   </v-container>
 </template>
 

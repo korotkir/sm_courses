@@ -38,7 +38,7 @@ function goToCourses() {
       />
     </div>
 
-    <Courses :courseData="assignedCourses" textButton="Посмотреть"/>
+    <Courses :courseData="assignedCourses" :assign="false"/>
   </v-container>
 </template>
 

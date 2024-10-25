@@ -9,11 +9,9 @@ const props = defineProps({
   course: {
     type: Object,
     required: true,
+
   },
-  textButton: {
-    type: String,
-    default: 'Открыть'
-  }
+  assign: Boolean
 })
 
 const getStatusColor = computed(() => {
@@ -39,17 +37,51 @@ async function assignCourse() {
   await rootStore.assignCourse(props.course.id)
 
   if (assignCourseStatus.value === 200) {
-    console.log('Курс с Id: ' + props.course.id + '. Статус ' + assignCourseStatus.value)
     isButtonDisabled.value = true
+
+    const assignDate = new Date();
+    const formattedAssignDate = `${String(assignDate.getDate()).padStart(2, '0')}.${String(assignDate.getMonth() + 1).padStart(2, '0')}.${assignDate.getFullYear()}`;
+
+    // Рассчитываем dueDate как assignDate + course.duration
+    const dueDate = new Date(assignDate);
+    dueDate.setDate(dueDate.getDate() + +props.course.duration);
+    const formattedDueDate = `${String(dueDate.getDate()).padStart(2, '0')}.${String(dueDate.getMonth() + 1).padStart(2, '0')}.${dueDate.getFullYear()}`;
+
+    // Добавляем курс в массив assigned в localStorage
+    const assignedCourses = JSON.parse(localStorage.getItem('assigned')) || [];
+
+    // Проверяем, существует ли курс в массиве, чтобы избежать дублирования
+    if (!assignedCourses.some(course => course.id === props.course.id)) {
+      // Создаем объект курса с дополнительными полями
+      const courseWithDates = {
+        ...props.course,
+        assignDate: formattedAssignDate,
+        dueDate: formattedDueDate,
+        status: 'Назначен',
+        percent: 0,
+        score: 0
+      };
+
+      assignedCourses.push(courseWithDates);
+      localStorage.setItem('assigned', JSON.stringify(assignedCourses));
+    }
+
 
     router.push({
       name: ROUTER_PATHS.COURSE,
-      params: { rid: props.course.id }
+      params: { rid: props.course.id },
     })
 
   } else {
     alert("Произошла ошибка. Попробуйте позже.")
   }
+}
+
+function goToCourse() {
+  router.push({
+    name: ROUTER_PATHS.COURSE,
+    params: { rid: props.course.id },
+  })
 }
 
 </script>
@@ -64,15 +96,23 @@ async function assignCourse() {
     <v-card-text class="course-card__text">
       <p v-if="course.duration">Длительность: <strong>{{ course.duration }} дней</strong></p>
       <p v-if="course.score">Текущий балл: <strong>{{ course.score }}</strong></p>
-      <p v-if="course.percent">Процент прохождения: <strong>{{ course.percent }}</strong></p>
+      <p v-if="course.percent">Процент прохождения: <strong>{{ course.percent }}%</strong></p>
     </v-card-text>
     <v-card-actions class="course-card__actions">
       <v-btn
+        v-if="assign"
         @click="assignCourse"
         :disabled="isButtonDisabled"
         color="primary"
       >
-        {{ props.textButton }}
+        Назначить себе
+      </v-btn>
+      <v-btn
+        @click="goToCourse"
+        :disabled="isButtonDisabled"
+        color="primary"
+      >
+        Подробнее
       </v-btn>
     </v-card-actions>
   </v-card>

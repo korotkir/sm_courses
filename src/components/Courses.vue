@@ -5,7 +5,7 @@ import { computed, ref } from 'vue'
 
 const props = defineProps({
   courseData: Array,
-  textButton: String,
+  assign: Boolean
 })
 
 const selectedStatus = ref('Все')
@@ -61,9 +61,9 @@ const courseCounter = computed(() => {
     <CourseCard
       v-else
       v-for="course in filteredByStatus"
-      :textButton="props.textButton"
       :key="course.id"
       :course="course"
+      :assign="assign"
     />
   </div>
 </template>
